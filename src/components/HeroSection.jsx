@@ -92,10 +92,10 @@ export default function HeroSection({ onComplete, metSeconds, isFinished }) {
         >
           {/* Number — plain string, no MotionValue child */}
           <motion.div
-            className="text-6xl md:text-8xl text-white font-thin counter-digits mb-10"
+            className="text-[12vw] sm:text-7xl md:text-8xl text-white font-thin counter-digits mb-10"
             style={{
               textShadow,
-              minWidth: '10ch',
+              whiteSpace: 'nowrap',
               textAlign: 'center',
             }}
             initial={{ opacity: 0, scale: 0.85 }}

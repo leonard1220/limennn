@@ -27,7 +27,7 @@ export default function RealtimeCounter({ onReveal }) {
   }, []);
 
   return (
-    <div className="w-full flex flex-col items-center justify-center py-40 mb-40">
+    <div className="w-full flex flex-col items-center justify-center pt-40 pb-64">
       <motion.div
         className="text-center space-y-12"
         initial={{ opacity: 0, filter: 'blur(10px)' }}

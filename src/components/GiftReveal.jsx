@@ -40,7 +40,7 @@ const gifts = [
   },
 ];
 
-export default function GiftReveal() {
+export default function GiftReveal({ onClose }) {
   const [phase, setPhase] = useState('flash'); // 'flash' → 'reveal'
 
   useEffect(() => {
@@ -50,7 +50,8 @@ export default function GiftReveal() {
 
   return (
     <motion.div
-      className="fixed inset-0 z-[100] flex flex-col items-center justify-start overflow-y-auto"
+      onClick={onClose}
+      className="fixed inset-0 z-[100] flex flex-col items-center justify-start overflow-y-auto cursor-pointer"
       initial={{ backgroundColor: 'rgba(255,255,255,0)' }}
       animate={{
         backgroundColor:
@@ -62,7 +63,8 @@ export default function GiftReveal() {
     >
       {phase === 'reveal' && (
         <motion.div
-          className="w-full max-w-md mx-auto px-6 pt-16 pb-24 flex flex-col items-center gap-6"
+          onClick={(e) => e.stopPropagation()}
+          className="w-full max-w-md mx-auto px-6 pt-16 pb-24 flex flex-col items-center gap-6 cursor-default"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 2, ease: 'easeOut' }}
@@ -169,7 +171,7 @@ export default function GiftReveal() {
             className="text-center text-sm font-thin tracking-widest mt-6"
             style={{ color: '#9a8a7a', wordBreak: 'keep-all' }}
           >
-            ✨ 谢谢你出现在我的世界里。
+            谢谢你出现在我的世界里。
           </motion.p>
         </motion.div>
       )}

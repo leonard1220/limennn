@@ -21,9 +21,9 @@ export default function App() {
     window.scrollTo(0, 0);
   }, []);
 
-  // Lock / unlock body scroll based on intro state
+  // Lock / unlock body scroll based on intro state AND gift reveal state
   useEffect(() => {
-    if (!isIntroFinished) {
+    if (!isIntroFinished || showGiftReveal) {
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
     } else {
@@ -34,7 +34,7 @@ export default function App() {
       document.body.style.overflow = '';
       document.documentElement.style.overflow = '';
     };
-  }, [isIntroFinished]);
+  }, [isIntroFinished, showGiftReveal]);
 
   return (
     // Outer wrapper: dark background for the memory sections
@@ -70,7 +70,7 @@ export default function App() {
 
       {/* Gift Reveal Overlay */}
       <AnimatePresence>
-        {showGiftReveal && <GiftReveal />}
+        {showGiftReveal && <GiftReveal onClose={() => setShowGiftReveal(false)} />}
       </AnimatePresence>
     </div>
   );
